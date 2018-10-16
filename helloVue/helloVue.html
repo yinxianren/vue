@@ -1,0 +1,36 @@
+<html>
+ <head>
+    <meta charset="utf-8">
+    <title>hello title</title>
+	  <link rel="stylesheet" href="../app.css">
+	  <link rel="stylesheet" href="./helloVue.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	
+ </head>
+   
+
+ <body>
+    <div class="zgh-app-div-container">
+	   <div id="zgh-helloVue-div-helloVue" class="zgh-helloVue-div-helloVue">
+	       {{msg}}
+	   </div>
+	   <div id="zgh-helloVue-div-bindMsg" class="zgh-helloVue-div-bindMsg">
+	     <span v-bind:title="msg"><!--  v-bind:title 绑定提示信息， -->
+		    这里我们遇到了一点新东西。你看到的 v-bind 特性被称为指令。指令带有前缀 v-，以表示它们是 Vue 提供的特殊特性。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“将这个元素节点的 title 特性和 Vue 实例的 message 属性保持一致”。
+
+如果你再次打开浏览器的 JavaScript 控制台，输入 app2.message = '新消息'，就会再一次看到这个绑定了 title 特性的 HTML 已经进行了更新。
+		 </span>
+	   </div>
+	   <div id="zgh-helloVue-div-condition" class="zgh-helloVue-div-condition">
+	       <p v-if='isSeen'>现在你看到我了</p>
+		   <button v-on:click="zgh_helloVue_button_switchDisplay">点击切换我</button> 
+	   </div>
+	   
+	  
+	  
+	  
+	   
+	</div>
+ </body>
+ <script src="./helloVue.js"></script>
+</html>

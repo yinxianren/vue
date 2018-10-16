@@ -1,0 +1,14 @@
+.zgh-app-div-container{
+	/* control the layout  */ 
+	display:flex;
+	flex-direction:column;
+	justify-content:cneter;/* 定义了项目在主轴上的对齐方式   */ 
+	
+	/* set global style   */ 
+	
+	font-size:18px;
+	
+	margin:auto 0;
+	text-align:center;
+	
+}
