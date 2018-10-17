@@ -1,36 +1,91 @@
 <html>
- <head>
-    <meta charset="utf-8">
-    <title>hello title</title>
-	  <link rel="stylesheet" href="../app.css">
-	  <link rel="stylesheet" href="./helloVue.css">
+<head>
+	<meta charset="utf-8">
+	<title>hello title</title>
+	<link rel="stylesheet" href="../app.css">
+	<link rel="stylesheet" href="./helloVue.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	
- </head>
-   
 
- <body>
-    <div class="zgh-app-div-container">
-	   <div id="zgh-helloVue-div-helloVue" class="zgh-helloVue-div-helloVue">
-	       {{msg}}
-	   </div>
-	   <div id="zgh-helloVue-div-bindMsg" class="zgh-helloVue-div-bindMsg">
-	     <span v-bind:title="msg"><!--  v-bind:title 绑定提示信息， -->
+</head>
+
+
+<body>
+<div class="zgh-app-div-container">
+	<hr>
+	<div id="zgh-div-helloVue" class="zgh-div-helloVue">
+		<h2>普通数据绑定</h2>
+		{{msg}}
+		<p>打开浏览器的 JavaScript 控制台，输入 app.message = '新消息',msg会动态更新</p>
+	</div>
+
+	<hr>
+	<div id="zgh-div-bindMsg" class="zgh-div-bindMsg">
+		<h2>v-bind:title 绑定提示信息</h2>
+		<span v-bind:title="msg"><!--  v-bind:title 绑定提示信息， -->
 		    这里我们遇到了一点新东西。你看到的 v-bind 特性被称为指令。指令带有前缀 v-，以表示它们是 Vue 提供的特殊特性。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“将这个元素节点的 title 特性和 Vue 实例的 message 属性保持一致”。
 
 如果你再次打开浏览器的 JavaScript 控制台，输入 app2.message = '新消息'，就会再一次看到这个绑定了 title 特性的 HTML 已经进行了更新。
 		 </span>
-	   </div>
-	   <div id="zgh-helloVue-div-condition" class="zgh-helloVue-div-condition">
-	       <p v-if='isSeen'>现在你看到我了</p>
-		   <button v-on:click="zgh_helloVue_button_switchDisplay">点击切换我</button> 
-	   </div>
-	   
-	  
-	  
-	  
-	   
+		<p>如果你再次打开浏览器的 JavaScript 控制台，输入 app2.message = '新消息'，就会再一次看到这个绑定了 title 特性的 HTML 已经进行了更新</p>
 	</div>
- </body>
- <script src="./helloVue.js"></script>
+	<hr>
+	<div id="zgh-div-condition" class="zgh-div-condition">
+		<h2>条件判断</h2>
+		<p v-if='isSeen'>现在你看到我了</p>
+		<button v-on:click="zgh_helloVue_button_switchDisplay">点击切换我</button>
+	</div>
+	<hr>
+	<div id="zgh-div-circulation" class="zgh-div-circulation">
+		<h2>for循环测试</h2>
+		<ol>
+			<li v-for="item in dataArray">
+				{{item.text}}
+			</li>
+		</ol>
+		<p>在控制台里，输入 app4.todos.push({ text: '新项目' })，你会发现列表最后添加了一个新项目。</p>
+	</div>
+	<hr>
+	<div id="zgh-div-monitorEvent" class="zgh-div-monitorEvent">
+		<h2>为了让用户和你的应用进行交互，我们可以用 v-on 指令添加一个事件监听器，通过它调用在 Vue 实例中定义的方法</h2>
+		<p>{{ message }}</p>
+		<button v-on:click="zhg_button_onclick_reverseMessage">逆转消息</button>
+	</div>
+	<hr>
+	<div id="zgh-div-modelTest" class="gh-div-modelTest">
+		<h2>Vue 还提供了 v-model 指令，它能轻松实现表单输入和应用状态之间的双向绑定</h2>
+		<p>{{ message }}</p>
+		<input v-model="message">
+	</div>
+
+	<hr>
+	<div id="zgh-div-componentTest" class="zgh-div-componentTest">
+		<h2>在 Vue 里，一个组件本质上是一个拥有预定义选项的一个 Vue 实例。在 Vue 中注册组件很简单</h2>
+		<ol>
+			<my-component></my-component>
+		</ol>
+
+	</div>
+	<hr>
+	<div id="zgh-div-componentProps" class="zgh-div-componentProps">
+		<h2>但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能从父作用域将数据传到子组件才对。让我们来修改一下组件的定义，使之能够接受一个 prop：</h2>
+
+		<ol>
+			<!--
+			  我们可以使用 v-bind 指令将待办项传到循环输出的每个组件中
+              现在我们为每个 my-component2 提供 todo 对象
+              todo 对象是变量，即其内容可以是动态的。
+              我们也需要为每个组件提供一个“key”，稍后再
+              作详细解释。
+            -->
+			<my-component2
+					v-for="item in groceryList"
+					v-bind:todo="item"
+					v-bind:key="item.id">
+			</my-component2>
+		</ol>
+	</div>
+
+</div>
+</body>
+<script src="./helloVue.js"></script>
 </html>

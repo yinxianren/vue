@@ -1,10 +1,22 @@
-.zgh-helloVue-div-helloVue{
+.zgh-div-helloVue,.zgh-div-componentProps{
 	background:red;
 }
-.zgh-helloVue-div-bindMsg{
+.zgh-div-bindMsg{
 	background:green;
 	color:#fff;
 }
-.zgh-helloVue-div-condition{
+.zgh-div-condition{
 	background:yellow;
+}
+.zgh-div-circulation{
+	background: lime;
+}
+.zgh-div-monitorEvent{
+	background: aqua;
+}
+.gh-div-modelTest{
+	background: burlywood;
+}
+.zgh-div-componentTest{
+	background: antiquewhite;
 }

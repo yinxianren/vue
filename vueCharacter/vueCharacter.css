@@ -1,0 +1,15 @@
+.zgh-div-dynamicBind{
+    background: antiquewhite;
+}
+.zhg-div-dynamicBindSrc{
+    background: aquamarine;
+}
+.zhg-div-dynamicBindClass{
+    background: beige;
+}
+.active{
+    color: darkgrey;
+}
+.static{
+    text-decoration:underline;
+}

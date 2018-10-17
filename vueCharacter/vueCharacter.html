@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 其他特性</title>
+    <link rel="stylesheet" href="../app.css">
+    <link rel="stylesheet" href="./vueCharacter.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div class="zgh-app-div-container">
+
+    <hr>
+    <div id="zgh-div-dynamicBind" class="zgh-div-dynamicBind ">
+        <h2>Mustache 语法不能作用在 HTML 特性上，遇到这种情况应该使用 v-bind 指令：</h2>
+        <div v-bind:id="dynamicId">id: {{dynamicId}}</div>
+        <hr>
+        <h2>如果 isButtonDisabled 的值是 null、undefined 或 false，则 disabled 特性甚至不会被包含在渲染出来的 button 元素中</h2>
+        <button class="btn btn-default" v-bind:disabled="isButtonDisabled">这边button是被操作对象</button>
+        <button  class="btn btn-warning" v-on:click="zgh_button_click_switchStatus">切换</button>
+    </div>
+
+    <hr>
+    <div id="zhg-div-dynamicBindSrc" class="zhg-div-dynamicBindSrc">
+        <image class="img-responsive img-thumbnail" v-bind:src="imgURL"></image>
+    </div>
+
+    <hr>
+    <div id="zhg-div-dynamicBindClass" class="zhg-div-dynamicBindClass">
+        <h2>我们可以传给 v-bind:class 一个对象，以动态地切换 class</h2>
+        <div v-bind:class="{ active: isActive }">
+            上面的语法表示 active 这个 class 存在与否将取决于数据属性 isActive 的 truthiness。
+        </div>
+        <h2>你可以在对象中传入更多属性来动态切换多个 class。此外，v-bind:class 指令也可以与普通的 class 属性共存</h2>
+        <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">
+            当 isActive 或者 hasError 变化时，class 列表将相应地更新。例如，如果 hasError 的值为 true，class 列表将变为 "static active text-danger"
+        </div>
+        <h2> 绑定的数据对象不必内联定义在模板里</h2>
+        <div v-bind:class="classObject">
+            绑定的数据对象不必内联定义在模板里
+        </div>
+        <h2>我们也可以在这里绑定一个返回对象的计算属性</h2>
+        <div v-bind:class="classCompute">
+            渲染的结果和上面一样。我们也可以在这里绑定一个返回对象的计算属性。这是一个常用且强大的模式
+        </div>
+        <h2>数组语法</h2>
+        <div  v-bind:class="[activeClass, errorClass]">
+            我们可以把一个数组传给 v-bind:class，以应用一个 class 列表
+        </div>
+        <h2>用在组件上</h2>
+        <my-component3 class="baz boo"></my-component3>
+        <hr>
+        <my-component3 v-bind:class="{ active: isActive }"></my-component3>
+        <hr>
+        <h2>对象语法</h2>
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">
+            v-bind:style 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。CSS 属性名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来) 来命名：
+        </div>
+        <div v-bind:style="styleObject">
+            直接绑定到一个样式对象通常更好，这会让模板更清晰：
+        </div>
+    </div>
+
+
+</div>
+</body>
+<script src="./vueCharacter.js"></script>
+</html>
